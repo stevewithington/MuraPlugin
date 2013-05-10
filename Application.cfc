@@ -26,6 +26,8 @@ component accessors=true output=false {
 	public any function onRequestStart(required string targetPage) {
 		var $ = StructKeyExists(application, 'serviceFactory') ? application.serviceFactory.getBean('$') : {};
 
+		include '../../config/appcfc/onRequestStart_include.cfm';
+
 		if ( StructKeyExists(session, 'siteid') ) {
 			$.init(session.siteid);
 		} else {
