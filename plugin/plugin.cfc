@@ -13,11 +13,11 @@ component accessors=true extends='mura.plugin.plugincfc' output=false {
 		super.install();
 	}
 	
-	public void function update() output=false {
+	public void function update() {
 		super.update();
 	}
 
-	public void function delete() output=false {
+	public void function delete() {
 		super.delete();
 	}
 
