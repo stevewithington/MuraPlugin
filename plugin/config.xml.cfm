@@ -37,7 +37,7 @@
 		<loadPriority>5</loadPriority>
 
 		<!-- Version : Meta information. May contain any value you wish. -->
-		<version>1.0</version>
+		<version>1.1</version>
 
 		<!--
 			Provider : 
@@ -153,6 +153,22 @@
 				name="Say Hello (CFC)"
 				component="extensions.contentRenderer"
 				displaymethod="sayHello"
+				persist="false" />
+
+			<!-- Configurable Display Object Example -->
+			<displayobject
+				name="Say Anything Configurable Display Object"  
+				component="extensions.contentRenderer"
+				displaymethod="dspConfiguredSayAnything"
+				configuratorJS="extensions/configurators/sayAnything/configurator.js"
+				configuratorInit="init"
+				persist="false" />
+
+			<!-- Dynamic Display Object Example -->
+			<displayobject 
+				name="Dynamic Display Object" 
+				component="extensions.contentRenderer"
+				displaymethod="dspWhatever" 
 				persist="false" />
 		</displayobjects>
 
