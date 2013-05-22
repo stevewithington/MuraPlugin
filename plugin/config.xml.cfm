@@ -37,7 +37,7 @@
 		<loadPriority>5</loadPriority>
 
 		<!-- Version : Meta information. May contain any value you wish. -->
-		<version>1.1</version>
+		<version>1.2</version>
 
 		<!--
 			Provider : 
@@ -82,7 +82,7 @@
 			<!--
 				Mappings will automatically be bound to the directory
 				your plugin is installed, so the above example would
-				refer to: /plugins/{packageName}/someDirectory/anotherDirectory/
+				refer to: {context}/plugins/{packageName}/someDirectory/anotherDirectory/
 			-->
 		</mappings>
 
@@ -164,12 +164,6 @@
 				configuratorInit="init"
 				persist="false" />
 
-			<!-- Dynamic Display Object Example -->
-			<displayobject 
-				name="Dynamic Display Object" 
-				component="extensions.contentRenderer"
-				displaymethod="dspWhatever" 
-				persist="false" />
 		</displayobjects>
 
 		<!-- 

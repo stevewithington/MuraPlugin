@@ -20,6 +20,7 @@ component accessors=true output=false {
 
 	public any function onApplicationStart() {
 		include '../../config/appcfc/onApplicationStart_include.cfm';
+		setPluginConfig($.getPlugin(this.pluginName));
 		return true;
 	}
 
@@ -39,7 +40,6 @@ component accessors=true output=false {
 		}
 
 		set$($);
-		setPluginConfig($.getPlugin(this.pluginName));
 		// You may want to change the methods being used to secure the request
 		secureRequest();
 
@@ -51,7 +51,7 @@ component accessors=true output=false {
 	}
 
 
-	// ---------------------------------------------------------------------------------
+	// ----------------------------------------------------------------------
 	// HELPERS
 
 	public any function secureRequest() {

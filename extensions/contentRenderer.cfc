@@ -46,35 +46,4 @@ component accessors=true extends='mura.cfobject' output=false {
 		return local.str;
 	}
 
-
-	/* 
-	* DYNAMIC DISPLAY OBJECTS
-	* --------------------------------------------------------------------- */
-	public any function dspWhatever() {
-		var local = {};
-
-		// grab everything that's been passed in from dspWhateverOptionsRender() and 
-		// unpack the JSON option values that were saved
-		local.params = IsJSON($.event('params')) ? DeserializeJSON($.event('params')) : {};
-
-		if ( StructKeyExists(local.params, 'objDisplayFile') ) {
-			savecontent variable='local.str' {
-				include 'display_objects/#local.params.objDisplayFile#';
-			};
-		}
-
-		return StructKeyExists(local, 'str') ? local.str : '';
-
-	}
-
-	public any function dspWhateverOptionsRender($) {
-		var local = {};
-
-		savecontent variable='local.str' {
-			include 'display_options/whateverOptions.cfm';
-		};
-
-		return local.str;
-	}
-
 }

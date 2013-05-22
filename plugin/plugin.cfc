@@ -22,9 +22,16 @@ component accessors=true extends='mura.plugin.plugincfc' output=false {
 	}
 
 	// public void function toBundle(pluginConfig, bundle, siteid) output=false {
-	// 	var bundleUtil = new BundleUtility();
-	// 	bundleUtil.toBundle(argumentCollection=arguments);
+		// this method is not defined in super
 	// }
 
+	// public void function fromBundle(pluginConfig, bundle, siteid) output=false {
+		// this method is not defined in super
+	// }
+
+	// access to the pluginConfig should available via variables.pluginConfig
+	public any function getPluginConfig() {
+		return StructKeyExists(variables, 'pluginConfig') ? variables.pluginConfig : {};
+	}
 
 }
