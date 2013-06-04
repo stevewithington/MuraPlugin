@@ -9,24 +9,26 @@
 */
 component accessors=true extends='mura.plugin.plugincfc' output=false {
 
+	// pluginConfig is automatically available as variables.pluginConfig
+
 	public void function install() {
-		super.install();
+		// Do custom installation stuff
 	}
 	
 	public void function update() {
-		super.update();
+		// Do custom update stuff
 	}
 
 	public void function delete() {
-		super.delete();
+		// Do custom delete stuff
 	}
 
 	// public void function toBundle(pluginConfig, bundle, siteid) output=false {
-		// this method is not defined in super
+		// Do custom toBundle stuff
 	// }
 
-	// public void function fromBundle(pluginConfig, bundle, siteid) output=false {
-		// this method is not defined in super
+	// public void function fromBundle(bundle, keyFactory, siteid) output=false {
+		// Do custom fromBundle stuff
 	// }
 
 	// access to the pluginConfig should available via variables.pluginConfig

@@ -9,7 +9,9 @@
 *
 */
 
-	$ = StructKeyExists(session, 'siteid') ? application.serviceFactory.getBean('MuraScope').init('session.siteid') : application.serviceFactory.getBean('MuraScope').init('default');
+	$ = StructKeyExists(session, 'siteid') ? 
+		application.serviceFactory.getBean('MuraScope').init('session.siteid') : 
+		application.serviceFactory.getBean('MuraScope').init('default');
 
 	params = IsJSON($.event('params')) ? DeSerializeJSON($.event('params')) : {};
 

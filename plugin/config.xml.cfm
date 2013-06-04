@@ -37,7 +37,7 @@
 		<loadPriority>5</loadPriority>
 
 		<!-- Version : Meta information. May contain any value you wish. -->
-		<version>1.2</version>
+		<version>1.3</version>
 
 		<!--
 			Provider : 
@@ -145,6 +145,7 @@
 			on a per-request basis.
 		-->
 		<displayobjects location="global">
+
 			<displayobject
 				name="Say Hello (CFM)"
 				displayobjectfile="extensions/display_objects/sayHello.cfm" />
@@ -169,6 +170,8 @@
 		<!-- 
 			Extensions :
 			Allows you to create custom Class Extensions of any type.
+			See /default/includes/themes/MuraBootstrap/config.xml.cfm
+			for examples.
 		-->
 		<!-- <extensions></extensions> -->
 

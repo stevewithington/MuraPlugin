@@ -20,48 +20,54 @@ component accessors=true output=false {
 
 	public any function onApplicationStart() {
 		include '../../config/appcfc/onApplicationStart_include.cfm';
+		var $ = get$();
 		setPluginConfig($.getPlugin(this.pluginName));
 		return true;
 	}
 
 	public any function onRequestStart(required string targetPage) {
-		var $ = StructKeyExists(application, 'serviceFactory') ? application.serviceFactory.getBean('$') : {};
-
+		var $ = get$();
 		include '../../config/appcfc/onRequestStart_include.cfm';
-
-		if ( StructKeyExists(session, 'siteid') ) {
-			$.init(session.siteid);
-		} else {
-			$.init('default');
-		}
 
 		if ( StructKeyExists(url, $.globalConfig('appreloadkey')) ) {
 			onApplicationStart();
 		}
 
-		set$($);
 		// You may want to change the methods being used to secure the request
 		secureRequest();
-
 		return true;
 	}
 
 	public void function onRequest(required string targetPage) {
-		include '#arguments.targetPage#';
+		var $ = get$();
+		var pluginConfig = getPluginConfig();
+		include arguments.targetPage;
 	}
 
 
 	// ----------------------------------------------------------------------
 	// HELPERS
 
+	public struct function get$() {
+		return IsDefined('session') && StructKeyExists(session, 'siteid') ?
+				application.serviceFactory.getBean('$').init(session.siteid) :
+				application.serviceFactory.getBean('$').init('default');
+	}
+
+	private void function setPluginConfig(struct pluginConfig={}) {
+		variables.pluginConfig = arguments.pluginConfig;
+	}
+
 	public any function secureRequest() {
+		var $ = get$();
 		if ( !allowedAccess() ) {
-			location(url='#$.globalConfig('context')#/admin/index.cfm?muraAction=clogin.main&returnURL=/plugins/MuraPlugin/', addtoken=false);
+			location(url='#$.globalConfig('context')#/admin/index.cfm?muraAction=clogin.main&returnURL=/plugins/#this.pluginName#/', addtoken=false);
 		}
 	}
 
 	public any function allowedAccess() {
 		// You could also check the user's group with $.currentUser().isInGroup('Some Group Name')
+		var $ = get$();
 		return $.currentUser().isSuperUser() && inPluginDirectory() ? true : false;
 	}
 
