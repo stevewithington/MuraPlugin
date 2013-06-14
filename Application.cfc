@@ -10,7 +10,6 @@
 component accessors=true output=false {
 
 	property name='$';
-	property name='pluginConfig';
 
 	this.pluginName = 'MuraPlugin';
 
@@ -21,7 +20,6 @@ component accessors=true output=false {
 	public any function onApplicationStart() {
 		include '../../config/appcfc/onApplicationStart_include.cfm';
 		var $ = get$();
-		setPluginConfig($.getPlugin(this.pluginName));
 		return true;
 	}
 
@@ -40,7 +38,7 @@ component accessors=true output=false {
 
 	public void function onRequest(required string targetPage) {
 		var $ = get$();
-		var pluginConfig = getPluginConfig();
+		var pluginConfig = $.getPlugin(this.pluginName);
 		include arguments.targetPage;
 	}
 
@@ -54,25 +52,20 @@ component accessors=true output=false {
 				application.serviceFactory.getBean('$').init('default');
 	}
 
-	private void function setPluginConfig(struct pluginConfig={}) {
-		variables.pluginConfig = arguments.pluginConfig;
-	}
-
 	public any function secureRequest() {
 		var $ = get$();
-		if ( !allowedAccess() ) {
-			location(url='#$.globalConfig('context')#/admin/index.cfm?muraAction=clogin.main&returnURL=/plugins/#this.pluginName#/', addtoken=false);
-		}
-	}
-
-	public any function allowedAccess() {
-		// You could also check the user's group with $.currentUser().isInGroup('Some Group Name')
-		var $ = get$();
-		return $.currentUser().isSuperUser() && inPluginDirectory() ? true : false;
+		return !inPluginDirectory() || $.currentUser().isSuperUser() ? true :
+			inPluginDirectory() && !$.getBean('permUtility').getModulePerm($.getPlugin(this.pluginName).getModuleID(),session.siteid) 
+				? goToLogin() : true;
 	}
 
 	public boolean function inPluginDirectory() {
 		return ListFindNoCase(getPageContext().getRequest().getRequestURI(), 'plugins', '/');
+	}
+
+	private void function goToLogin() {
+		var $ = get$();
+		location(url='#$.globalConfig('context')#/admin/index.cfm?muraAction=clogin.main&returnURL=/plugins/#$.getPlugin(this.pluginName).getPackage()#/', addtoken=false)
 	}
 
 }
