@@ -65,7 +65,7 @@ component accessors=true output=false {
 
 	private void function goToLogin() {
 		var $ = get$();
-		location(url='#$.globalConfig('context')#/admin/index.cfm?muraAction=clogin.main&returnURL=/plugins/#$.getPlugin(this.pluginName).getPackage()#/', addtoken=false)
+		location(url='#$.globalConfig('context')#/admin/index.cfm?muraAction=clogin.main&returnURL=#$.globalConfig('context')#/plugins/#$.getPlugin(this.pluginName).getPackage()#/', addtoken=false)
 	}
 
 }
