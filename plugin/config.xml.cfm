@@ -37,7 +37,7 @@
 		<loadPriority>5</loadPriority>
 
 		<!-- Version : Meta information. May contain any value you wish. -->
-		<version>1.4</version>
+		<version>1.4.1</version>
 
 		<!--
 			Provider : 
