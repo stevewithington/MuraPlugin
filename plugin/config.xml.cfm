@@ -37,7 +37,7 @@
 		<loadPriority>5</loadPriority>
 
 		<!-- Version : Meta information. May contain any value you wish. -->
-		<version>1.3</version>
+		<version>1.4</version>
 
 		<!--
 			Provider : 
@@ -162,7 +162,7 @@
 				component="extensions.contentRenderer"
 				displaymethod="dspConfiguredSayAnything"
 				configuratorJS="extensions/configurators/sayAnything/configurator.js"
-				configuratorInit="init"
+				configuratorInit="initSayAnythingConfigurator"
 				persist="false" />
 
 		</displayobjects>

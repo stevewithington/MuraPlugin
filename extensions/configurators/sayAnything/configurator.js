@@ -7,7 +7,7 @@
 * http://www.apache.org/licenses/LICENSE-2.0
 *
 */
-function init(data) {
+function initSayAnythingConfigurator(data) {
 
 	initConfigurator(data,{
 		url: '../plugins/MuraPlugin/extensions/configurators/sayAnything/configurator.cfm'
