@@ -55,7 +55,8 @@ component accessors=true output=false {
 	public any function secureRequest() {
 		var $ = get$();
 		return !inPluginDirectory() || $.currentUser().isSuperUser() ? true :
-			inPluginDirectory() && !$.getBean('permUtility').getModulePerm($.getPlugin(this.pluginName).getModuleID(),session.siteid) 
+			( inPluginDirectory() && !structKeyExists(session, 'siteid') ) ||
+			( inPluginDirectory() && !$.getBean('permUtility').getModulePerm($.getPlugin(this.pluginName).getModuleID(),session.siteid) )
 				? goToLogin() : true;
 	}
 
