@@ -11,7 +11,7 @@ component accessors=true extends='mura.plugin.pluginGenericEventHandler' output=
 
 	property name='$' hint='mura scope';
 
-	this.pluginName = 'MuraPlugin';
+	include '../plugin/settings.cfm';
 
 	public any function onApplicationLoad(required struct $) {
 		// Register all event handlers/listeners of this .cfc with Mura CMS
@@ -20,9 +20,9 @@ component accessors=true extends='mura.plugin.pluginGenericEventHandler' output=
 	}
 
 	public any function onSiteRequestStart(required struct $) {
-		// Makes any methods of the object accessible via $.yourPluginName
+		// Makes any methods of the object accessible via $.yourPluginPackageName
 		var contentRenderer = new contentRenderer(arguments.$);
-		arguments.$.setCustomMuraScopeKey(this.pluginName, contentRenderer);
+		arguments.$.setCustomMuraScopeKey(variables.settings.package, contentRenderer);
 		set$(arguments.$);
 	}
 

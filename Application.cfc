@@ -11,8 +11,7 @@ component accessors=true output=false {
 
 	property name='$';
 
-	this.pluginName = 'MuraPlugin';
-
+	include 'plugin/settings.cfm';
 	include '../../config/applicationSettings.cfm';
 	include '../../config/mappings.cfm';
 	include '../mappings.cfm';
@@ -38,7 +37,7 @@ component accessors=true output=false {
 
 	public void function onRequest(required string targetPage) {
 		var $ = get$();
-		var pluginConfig = $.getPlugin(this.pluginName);
+		var pluginConfig = $.getPlugin(variables.settings.pluginName);
 		include arguments.targetPage;
 	}
 
@@ -47,17 +46,19 @@ component accessors=true output=false {
 	// HELPERS
 
 	public struct function get$() {
-		return IsDefined('session') && StructKeyExists(session, 'siteid') ?
-				application.serviceFactory.getBean('$').init(session.siteid) :
-				application.serviceFactory.getBean('$').init('default');
+		return IsDefined('session') && StructKeyExists(session, 'siteid') 
+			? application.serviceFactory.getBean('$').init(session.siteid) 
+			: application.serviceFactory.getBean('$').init('default');
 	}
 
 	public any function secureRequest() {
 		var $ = get$();
-		return !inPluginDirectory() || $.currentUser().isSuperUser() ? true :
-			( inPluginDirectory() && !structKeyExists(session, 'siteid') ) ||
-			( inPluginDirectory() && !$.getBean('permUtility').getModulePerm($.getPlugin(this.pluginName).getModuleID(),session.siteid) )
-				? goToLogin() : true;
+		return !inPluginDirectory() || $.currentUser().isSuperUser() 
+			? true 
+			: ( inPluginDirectory() && !structKeyExists(session, 'siteid') ) 
+				|| ( inPluginDirectory() && !$.getBean('permUtility').getModulePerm($.getPlugin(variables.settings.pluginName).getModuleID(),session.siteid) )
+				? goToLogin() 
+				: true;
 	}
 
 	public boolean function inPluginDirectory() {
@@ -66,7 +67,7 @@ component accessors=true output=false {
 
 	private void function goToLogin() {
 		var $ = get$();
-		location(url='#$.globalConfig('context')#/admin/index.cfm?muraAction=clogin.main&returnURL=#$.globalConfig('context')#/plugins/#$.getPlugin(this.pluginName).getPackage()#/', addtoken=false);
+		location(url='#$.globalConfig('context')#/admin/index.cfm?muraAction=clogin.main&returnURL=#$.globalConfig('context')#/plugins/#$.getPlugin(variables.settings.pluginName).getPackage()#/', addtoken=false);
 	}
 
 }

@@ -10,6 +10,7 @@
 component accessors=true extends='mura.plugin.plugincfc' output=false {
 
 	// pluginConfig is automatically available as variables.pluginConfig
+	include 'settings.cfm';
 
 	public void function install() {
 		// Do custom installation stuff

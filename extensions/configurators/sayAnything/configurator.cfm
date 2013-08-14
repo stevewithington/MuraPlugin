@@ -10,8 +10,8 @@
 */
 
 	$ = StructKeyExists(session, 'siteid') ? 
-		application.serviceFactory.getBean('MuraScope').init('session.siteid') : 
-		application.serviceFactory.getBean('MuraScope').init('default');
+		application.serviceFactory.getBean('$').init('session.siteid') : 
+		application.serviceFactory.getBean('$').init('default');
 
 	params = IsJSON($.event('params')) ? DeSerializeJSON($.event('params')) : {};
 
@@ -34,25 +34,24 @@
 		data-name="sayAnything" 
 		data-objectid="#$.event('objectID')#">
 
-		<dl class="singleColumn">
+		<div class="row-fluid">
 
 			<!--- Message --->
-			<dt class="first">
-				<label for="size">Message</label>
-			</dt>
-			<dd>
-				<input type="text" 
-					name="message" 
-					id="message" 
-					class="objectParam" 
-					value="#params.message#" />
-			</dd>
+			<div class="control-group">
+				<label for="size" class="control-label">Message</label>
+				<div class="controls">
+					<input type="text" 
+						name="message" 
+						id="message" 
+						class="objectParam span12" 
+						value="#params.message#">
+				</div>
+			</div>
+		</div>
 
-			<!--- MISC. : Not necessary, just using as an example of how to add hidden fields --->
-			<input type="hidden" name="configuredDTS" class="objectParam" value="#Now()#" />
-			<input type="hidden" name="configuredBy" class="objectParam" value="#HTMLEditFormat($.currentUser('LName'))#, #HTMLEditFormat($.currentUser('FName'))#" />
-
-		</dl>
+		<!--- MISC. : Not necessary, just using as an example of how to add hidden fields --->
+		<input type="hidden" name="configuredDTS" class="objectParam" value="#Now()#" />
+		<input type="hidden" name="configuredBy" class="objectParam" value="#HTMLEditFormat($.currentUser('LName'))#, #HTMLEditFormat($.currentUser('FName'))#" />
 
 	</div>
 

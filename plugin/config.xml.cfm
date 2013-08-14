@@ -8,15 +8,16 @@
 * http://www.apache.org/licenses/LICENSE-2.0
 *
 */
+	include 'settings.cfm';
 </cfscript>
 <cfoutput>
 	<plugin>
 
 		<!-- Name : the name of the plugin -->
-		<name>MuraPlugin</name>
+		<name>#variables.settings.pluginName#</name>
 
 		<!-- Package : a unique, variable-safe name for the plugin -->
-		<package>MuraPlugin</package>
+		<package>#variables.settings.package#</package>
 
 		<!--
 			DirectoryFormat : 
@@ -34,26 +35,26 @@
 			plugins as services. This does NOT affect the order in which
 			regular events are fired.
 		-->
-		<loadPriority>5</loadPriority>
+		<loadPriority>#variables.settings.loadPriority#</loadPriority>
 
 		<!-- Version : Meta information. May contain any value you wish. -->
-		<version>1.4.2</version>
+		<version>#variables.settings.version#</version>
 
 		<!--
 			Provider : 
 			Meta information. The name of the creator/organization that
 			developed the plugin.
 		-->
-		<provider>Blue River Interactive</provider>
+		<provider>#variables.settings.provider#</provider>
 
 		<!--
 			ProviderURL : 
 			URL of the creator/organization that developed the plugin.
 		-->
-		<providerURL>http://blueriver.com</providerURL>
+		<providerURL>#variables.settings.providerURL#</providerURL>
 
 		<!-- Category : Usually either 'Application' or 'Utility' -->
-		<category>Application</category>
+		<category>#variables.settings.category#</category>
 		
 		<!--
 			ORMCFCLocation : 
