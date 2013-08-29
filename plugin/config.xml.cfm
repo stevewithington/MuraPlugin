@@ -113,18 +113,19 @@
 		-->
 		<settings>
 			<!--
-			<setting
-				name="yourNameAttribute"
-				label="Your Label"
-				hint="Your hint"
-				type="text|radioGroup|textArea|select|multiSelectBox"
-				required="false|true"
-				validation="none|email|date|numeric|regex"
-				regex="your javascript regex goes here (if validation=regex)"
-				message="Your message if validation fails"
-				defaultvalue=""
-				optionlist="1^2^3"
-				optionlabellist="One^Two^Three" />
+			<setting>
+				<name>yourNameAttribute</name>
+				<label>Your Label</label>
+				<hint>Your hint</hint>
+				<type>text|radioGroup|textArea|select|multiSelectBox</type>
+				<required>false|true</required>
+				<validation>none|email|date|numeric|regex</validation>
+				<regex>your javascript regex goes here (if validation=regex)</regex>
+				<message>Your message if validation fails</message>
+				<defaultvalue>1</defaultvalue>
+				<optionlist>1^2^3</optionlist>
+				<optionlabellist>One^Two^Three</optionlabellist>
+			</setting>
 			-->
 		</settings>
 
