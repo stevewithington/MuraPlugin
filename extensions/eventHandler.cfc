@@ -48,6 +48,7 @@ component accessors=true extends='mura.plugin.pluginGenericEventHandler' output=
 
 	// This assumes you've created a Folder/Employees custom class extension
 	// Examples have been commented out in the /MuraPlugin/plugin/config.xml.cfm file
+	// The on{Type}{SubType}Edit() method won't work yet. A pull request was issued as of Mura v6.1.6014
 	/*
 	public any function onFolderEmployeesEdit(required struct $) {
 		var local = {};
