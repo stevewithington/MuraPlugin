@@ -3,7 +3,7 @@
 * 
 * This file is part of MuraPlugin
 *
-* Copyright 2013 Stephen J. Withington, Jr.
+* Copyright 2013-2014 Stephen J. Withington, Jr.
 * Licensed under the Apache License, Version v2.0
 * http://www.apache.org/licenses/LICENSE-2.0
 *
@@ -25,9 +25,9 @@
 
 	<h3>Tested With</h3>
 	<ul>
-		<li>Mura CMS Core Version <strong>6.0+</strong></li>
-		<li>Adobe ColdFusion <strong>10.0.9</strong></li>
-		<li>Railo <strong>4.0.4</strong></li>
+		<li>Mura CMS Core Version <strong>6.1+</strong></li>
+		<li>Adobe ColdFusion <strong>11.0.0</strong></li>
+		<li>Railo <strong>4.2.1</strong></li>
 	</ul>
 
 	<h3>Need help?</h3>

@@ -3,7 +3,7 @@
 * 
 * This file is part of MuraPlugin
 *
-* Copyright 2013 Stephen J. Withington, Jr.
+* Copyright 2013-2014 Stephen J. Withington, Jr.
 * Licensed under the Apache License, Version v2.0
 * http://www.apache.org/licenses/LICENSE-2.0
 *
@@ -175,7 +175,39 @@
 			See /default/includes/themes/MuraBootstrap/config.xml.cfm
 			for examples.
 		-->
-		<!-- <extensions></extensions> -->
+		<extensions>
+
+			<!-- Example of using Custom UI in conjunction with onContentEdit() -->
+			<!--- <extension type="Base" subType="Default">
+				<attributeset name="onContentEdit Fields" container="Custom">
+					<attribute 
+						name="muraPluginExampleField"
+						label="MuraPlugin Example Field"
+						hint=""
+						type="TextBox"
+						defaultValue=""
+						required="false"
+						validation=""
+						regex=""
+						message=""
+						optionList=""
+						optionLabelList="" />
+					<attribute 
+						name="muraPluginSomeSelectMenu"
+						label="MuraPlugin Some Select Menu"
+						hint=""
+						type="SelectBox"
+						defaultValue=""
+						required="false"
+						validation=""
+						regex=""
+						message=""
+						optionList="[mura]application.MuraPlugin.getMyCustomOptionList()[/mura]"
+						optionLabelList="[mura]application.MuraPlugin.getMyCustomOptionLabelList()[/mura]" />
+				</attributeset>
+			</extension> --->
+			
+		</extensions>
 
 	</plugin>
 </cfoutput>

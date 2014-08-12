@@ -2,7 +2,7 @@
 * 
 * This file is part of MuraPlugin
 *
-* Copyright 2013 Stephen J. Withington, Jr.
+* Copyright 2013-2014 Stephen J. Withington, Jr.
 * Licensed under the Apache License, Version v2.0
 * http://www.apache.org/licenses/LICENSE-2.0
 *
@@ -46,6 +46,18 @@ component accessors=true extends='mura.cfobject' output=false {
 		local.str = '<div class="objSayAnything">' & sayAnything(argumentCollection=local.params) & '</div>';
 
 		return local.str;
+	}
+
+	/* 
+	* CUSTOM TAB METHODS
+	* --------------------------------------------------------------------- */
+	public any function getMyCustomOptionList() {
+		// you could easily query a database, or whatever else you want here
+		return '1^2^3^4';
+	}
+
+	public any function getMyCustomOptionLabelList() {
+		return 'Option 1^Option 2^Option 3^Option 4';
 	}
 
 }
