@@ -10,7 +10,7 @@
 */
 
 	$ = StructKeyExists(session, 'siteid') ? 
-		application.serviceFactory.getBean('$').init('session.siteid') : 
+		application.serviceFactory.getBean('$').init(session.siteid) : 
 		application.serviceFactory.getBean('$').init('default');
 
 	params = IsJSON($.event('params')) ? DeSerializeJSON($.event('params')) : {};
