@@ -18,11 +18,6 @@
 	<h1>#HTMLEditFormat(pluginConfig.getName())#</h1>
 	<p>This is a starter plugin to jumpstart your next Mura CMS plugin.</p>
 
-	<!---
-	<h3>pluginConfig</h3>
-	<cfdump var="#pluginConfig#" label="pluginConfig" />
-	--->
-
 	<h3>Tested With</h3>
 	<ul>
 		<li>Mura CMS Core Version <strong>6.1+</strong></li>
