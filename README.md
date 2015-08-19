@@ -4,13 +4,13 @@ This is a starter plugin to jumpstart your next Mura CMS plugin.
 
 
 ##Tested With
-* Mura CMS Core Version 6.1+
+* Mura CMS Core Version 6.2+
 * Adobe ColdFusion 11.0.0
-* Railo 4.2.1
+* Lucee 4.5.1
 
 
 ##License
-Copyright 2013-2014 Stephen J. Withington, Jr.
+Copyright 2013-2015 Stephen J. Withington, Jr.
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this work except in compliance with the License. You may obtain a copy of the License in the LICENSE file, or at:
 

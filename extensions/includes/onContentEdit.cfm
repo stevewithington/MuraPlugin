@@ -3,7 +3,7 @@
 * 
 * This file is part of MuraPlugin
 *
-* Copyright 2013-2014 Stephen J. Withington, Jr.
+* Copyright 2013-2015 Stephen J. Withington, Jr.
 * Licensed under the Apache License, Version v2.0
 * http://www.apache.org/licenses/LICENSE-2.0
 *
@@ -30,7 +30,9 @@
         They're listed here merely as examples.
 
         Also, using onContentEdit() assumes you've added class extensions
-        under Base/Default to apply to all content types.
+        under Base/Default to apply to all content types. Or, you could 
+        target a specific content Type and/or SubType using:
+        on{Type}Edit(), or on{Type}{SubType}Edit()
       --->
       <label for="muraPluginExampleField" class="control-label">Example Field</label>
       <input name="muraPluginExampleField" type="text" value="#local.$.content('muraPluginExampleField')#" class="form-control" />
@@ -50,10 +52,10 @@
             local.option = ListGetAt(local.myOptionList, local.i, '^');
             local.label = ListGetAt(local.myOptionLabelList, local.i, '^');
             WriteOutput('<option value="#local.option#"');
-            if ( $.content('muraPluginSomeSelectMenu') == option ) {
+            if ( $.content('muraPluginSomeSelectMenu') == local.option ) {
               WriteOutput(' selected="selected"');
             };
-            WriteOutput('>#label#</option>');
+            WriteOutput('>#local.label#</option>');
           };
         </cfscript>
       </select>
