@@ -12,9 +12,10 @@
 		pluginName = 'MuraPlugin'
 		, package = 'MuraPlugin'
 		, loadPriority = 5
-		, version = '1.6.2'
+		, version = '1.7.0'
 		, provider = 'Steve Withington'
 		, providerURL = 'http://stephenwithington.com'
 		, category = 'Application'
+    , reloadApplicationOnEveryRequest = false
 	};
 </cfscript>

@@ -20,9 +20,9 @@
 
 	<h3>Tested With</h3>
 	<ul>
-		<li>Mura CMS Core Version <strong>6.1+</strong></li>
+		<li>Mura CMS Core Version <strong>6.2+</strong></li>
 		<li>Adobe ColdFusion <strong>11.0.0</strong></li>
-		<li>Railo <strong>4.2.1</strong></li>
+		<li>Lucee <strong>4.5.1</strong></li>
 	</ul>
 
 	<h3>Need help?</h3>

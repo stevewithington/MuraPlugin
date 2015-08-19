@@ -26,8 +26,13 @@ component accessors=true output=false {
 		var $ = get$();
 		include '../../config/appcfc/onRequestStart_include.cfm';
 
-		if ( StructKeyExists(url, $.globalConfig('appreloadkey')) ) {
+		if ( isRequestExpired() ) {
 			onApplicationStart();
+			if ( !StructKeyExists(session, variables.settings.package) ) {
+				lock scope='session' type='exclusive' timeout=10 {
+					setupSession();
+				}
+			}
 		}
 
 		// You may want to change the methods being used to secure the request
@@ -39,6 +44,15 @@ component accessors=true output=false {
 		var $ = get$();
 		var pluginConfig = $.getPlugin(variables.settings.pluginName);
 		include arguments.targetPage;
+	}
+
+	public void function onSessionStart() {
+		include '../../config/appcfc/onSessionStart_include.cfm';
+		setupSession();
+	}
+
+	public void function onSessionEnd() {
+		include '../../config/appcfc/onSessionEnd_include.cfm';
 	}
 
 
@@ -55,19 +69,40 @@ component accessors=true output=false {
 		var $ = get$();
 		return !inPluginDirectory() || $.currentUser().isSuperUser() 
 			? true 
-			: ( inPluginDirectory() && !structKeyExists(session, 'siteid') ) 
+			: ( inPluginDirectory() && !StructKeyExists(session, 'siteid') ) 
 				|| ( inPluginDirectory() && !$.getBean('permUtility').getModulePerm($.getPlugin(variables.settings.pluginName).getModuleID(),session.siteid) )
 				? goToLogin() 
 				: true;
 	}
 
 	public boolean function inPluginDirectory() {
-		return ListFindNoCase(getPageContext().getRequest().getRequestURI(), 'plugins', '/');
+		var uri = getPageContext().getRequest().getRequestURI()
+		return ListFindNoCase(uri, 'plugins', '/') && ListFindNoCase(uri, variables.settings.package,'/');
 	}
 
 	private void function goToLogin() {
 		var $ = get$();
 		location(url='#$.globalConfig('context')#/admin/index.cfm?muraAction=clogin.main&returnURL=#$.globalConfig('context')#/plugins/#$.getPlugin(variables.settings.pluginName).getPackage()#/', addtoken=false);
+	}
+
+	private boolean function isRequestExpired() {
+		var p = variables.settings.package;
+		return !StructKeyExists(session, p) 
+				|| !StructKeyExists(application, 'appInitializedTime')
+				|| DateCompare(now(), session[p].expires, 's') == 1 
+				|| DateCompare(application.appInitializedTime, session[p].created, 's') == 1
+			? true : false;
+	}
+
+	private void function setupSession() {
+		var p = variables.settings.package;
+		StructDelete(session, p);
+		// Expires - s:seconds, n:minutes, h:hours, d:days
+		session[p] = {
+			created = Now()
+			, expires = DateAdd('d', 1, Now())
+			, sessionid = Hash(CreateUUID())
+		};
 	}
 
 }
