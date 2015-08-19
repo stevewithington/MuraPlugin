@@ -28,10 +28,8 @@ component accessors=true output=false {
 
 		if ( isRequestExpired() ) {
 			onApplicationStart();
-			if ( !StructKeyExists(session, variables.settings.package) ) {
-				lock scope='session' type='exclusive' timeout=10 {
-					setupSession();
-				}
+			lock scope='session' type='exclusive' timeout=10 {
+				setupSession();
 			}
 		}
 
@@ -87,11 +85,13 @@ component accessors=true output=false {
 
 	private boolean function isRequestExpired() {
 		var p = variables.settings.package;
-		return !StructKeyExists(session, p) 
+		return variables.settings.reloadApplicationOnEveryRequest
+				|| !StructKeyExists(session, p) 
 				|| !StructKeyExists(application, 'appInitializedTime')
 				|| DateCompare(now(), session[p].expires, 's') == 1 
 				|| DateCompare(application.appInitializedTime, session[p].created, 's') == 1
-			? true : false;
+				|| (StructKeyExists(variables.settings, 'reloadApplicationOnEveryRequest') 
+				    && variables.settings.reloadApplicationOnEveryRequest);
 	}
 
 	private void function setupSession() {
