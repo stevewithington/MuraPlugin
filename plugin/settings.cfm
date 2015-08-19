@@ -16,6 +16,6 @@
 		, provider = 'Steve Withington'
 		, providerURL = 'http://stephenwithington.com'
 		, category = 'Application'
-    , reloadApplicationOnEveryRequest = false
+		, reloadApplicationOnEveryRequest = false
 	};
 </cfscript>
