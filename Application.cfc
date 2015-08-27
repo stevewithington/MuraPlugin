@@ -18,12 +18,10 @@ component accessors=true output=false {
 
 	public any function onApplicationStart() {
 		include '../../config/appcfc/onApplicationStart_include.cfm';
-		var $ = get$();
 		return true;
 	}
 
 	public any function onRequestStart(required string targetPage) {
-		var $ = get$();
 		include '../../config/appcfc/onRequestStart_include.cfm';
 
 		if ( isRequestExpired() ) {
@@ -57,10 +55,18 @@ component accessors=true output=false {
 	// ----------------------------------------------------------------------
 	// HELPERS
 
-	public struct function get$() {
-		return IsDefined('session') && StructKeyExists(session, 'siteid') 
-			? application.serviceFactory.getBean('$').init(session.siteid) 
-			: application.serviceFactory.getBean('$').init('default');
+	private struct function get$() {
+		if ( !StructKeyExists(arguments, '$') ) {
+			var siteid = StructKeyExists(session, 'siteid') ? session.siteid : 'default';
+
+			arguments.$ = StructKeyExists(request, 'murascope')
+				? request.murascope
+				: StructKeyExists(application, 'serviceFactory')
+					? application.serviceFactory.getBean('$').init(siteid)
+					: {};
+		}
+
+		return arguments.$;
 	}
 
 	public any function secureRequest() {

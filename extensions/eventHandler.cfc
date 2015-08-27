@@ -9,8 +9,6 @@
 */
 component accessors=true extends='mura.plugin.pluginGenericEventHandler' output=false {
 
-	property name='$' hint='mura scope';
-
 	include '../plugin/settings.cfm';
 
 	public any function onApplicationLoad(required struct $) {
@@ -19,17 +17,19 @@ component accessors=true extends='mura.plugin.pluginGenericEventHandler' output=
 
 		// Makes any methods of the object accessible via application.yourPluginPackageName
 		lock scope='application' type='exclusive' timeout=10 {
-			application[variables.settings.package] = new contentRenderer(arguments.$);
+			application[variables.settings.package] = new displayObjects().init();
 		}
-
-		set$(arguments.$);
 	}
 
 	public any function onSiteRequestStart(required struct $) {
 		// Makes any methods of the object accessible via $.yourPluginPackageName
-		var contentRenderer = new contentRenderer(arguments.$);
-		arguments.$.setCustomMuraScopeKey(variables.settings.package, contentRenderer);
-		set$(arguments.$);
+		var displayObjects = new displayObjects().init();
+		arguments.$.setCustomMuraScopeKey(variables.settings.package, displayObjects);
+
+		// if you want to inject your own custom methods into the contentRenderer, you
+		// could easily do that as follows
+		$.getContentRenderer().injectMethod('sayHello', displayObjects.sayHello);
+		// you could could loop over a CFC as a structure and inject whatever you want
 	}
 
 	// This will create a new tab on all content types (Page,Folder,Link,File,Folder,Calendar,Gallery)
@@ -37,7 +37,6 @@ component accessors=true extends='mura.plugin.pluginGenericEventHandler' output=
 	public any function onContentEdit(required struct $) {
 		var local = {};
 		local.$ = arguments.$;
-		set$(arguments.$);
 
 		savecontent variable='local.str' {
 			include 'includes/onContentEdit.cfm';
@@ -56,7 +55,6 @@ component accessors=true extends='mura.plugin.pluginGenericEventHandler' output=
 
 		// example of how to define a custom label for your tab
 		local.$.event('tabLabel', 'Employee Info');
-		set$(arguments.$);
 
 		// check plugin permissions before rendering custom tab
 		if ( local.$.getBean('permUtility').getModulePerm(local.$.getPlugin(variables.settings.pluginName).getModuleID(), local.$.event('siteid') ) ) {

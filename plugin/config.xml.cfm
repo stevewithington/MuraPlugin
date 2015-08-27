@@ -154,14 +154,14 @@
 
 			<displayobject
 				name="Say Hello (CFC)"
-				component="extensions.contentRenderer"
+				component="extensions.displayObjects"
 				displaymethod="sayHello"
 				persist="false" />
 
 			<!-- Configurable Display Object Example -->
 			<displayobject
 				name="Say Anything Configurable Display Object"  
-				component="extensions.contentRenderer"
+				component="extensions.displayObjects"
 				displaymethod="dspConfiguredSayAnything"
 				configuratorJS="extensions/configurators/sayAnything/configurator.js"
 				configuratorInit="initSayAnythingConfigurator"
@@ -202,8 +202,8 @@
 						validation=""
 						regex=""
 						message=""
-						optionList="[mura]application.MuraPlugin.getMyCustomOptionList()[/mura]"
-						optionLabelList="[mura]application.MuraPlugin.getMyCustomOptionLabelList()[/mura]" />
+						optionList="[m]application.MuraPlugin.getMyCustomOptionList()[/m]"
+						optionLabelList="[m]application.MuraPlugin.getMyCustomOptionLabelList()[/m]" />
 				</attributeset>
 			</extension> --->
 			

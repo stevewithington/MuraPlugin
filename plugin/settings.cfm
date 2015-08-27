@@ -12,7 +12,7 @@
 		pluginName = 'MuraPlugin'
 		, package = 'MuraPlugin'
 		, loadPriority = 5
-		, version = '1.7.0'
+		, version = '1.7.1'
 		, provider = 'Steve Withington'
 		, providerURL = 'http://stephenwithington.com'
 		, category = 'Application'
