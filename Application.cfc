@@ -80,7 +80,7 @@ component accessors=true output=false {
 	}
 
 	public boolean function inPluginDirectory() {
-        var uri = getPageContext().getRequest().getRequestURI();
+		var uri = getPageContext().getRequest().getRequestURI();
 		return ListFindNoCase(uri, 'plugins', '/') && ListFindNoCase(uri, variables.settings.package,'/');
 	}
 
