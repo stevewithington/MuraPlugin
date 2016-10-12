@@ -1,8 +1,8 @@
 /**
-* 
+*
 * This file is part of MuraPlugin
 *
-* Copyright 2013-2015 Stephen J. Withington, Jr.
+* Copyright 2013-2016 Stephen J. Withington, Jr.
 * Licensed under the Apache License, Version v2.0
 * http://www.apache.org/licenses/LICENSE-2.0
 *
@@ -71,11 +71,11 @@ component accessors=true output=false {
 
 	public any function secureRequest() {
 		var $ = get$();
-		return !inPluginDirectory() || $.currentUser().isSuperUser() 
-			? true 
-			: ( inPluginDirectory() && !StructKeyExists(session, 'siteid') ) 
+		return !inPluginDirectory() || $.currentUser().isSuperUser()
+			? true
+			: ( inPluginDirectory() && !StructKeyExists(session, 'siteid') )
 				|| ( inPluginDirectory() && !$.getBean('permUtility').getModulePerm($.getPlugin(variables.settings.pluginName).getModuleID(),session.siteid) )
-				? goToLogin() 
+				? goToLogin()
 				: true;
 	}
 
@@ -92,11 +92,11 @@ component accessors=true output=false {
 	private boolean function isRequestExpired() {
 		var p = variables.settings.package;
 		return variables.settings.reloadApplicationOnEveryRequest
-				|| !StructKeyExists(session, p) 
+				|| !StructKeyExists(session, p)
 				|| !StructKeyExists(application, 'appInitializedTime')
-				|| DateCompare(now(), session[p].expires, 's') == 1 
+				|| DateCompare(now(), session[p].expires, 's') == 1
 				|| DateCompare(application.appInitializedTime, session[p].created, 's') == 1
-				|| (StructKeyExists(variables.settings, 'reloadApplicationOnEveryRequest') 
+				|| (StructKeyExists(variables.settings, 'reloadApplicationOnEveryRequest')
 				    && variables.settings.reloadApplicationOnEveryRequest);
 	}
 

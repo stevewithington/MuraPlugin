@@ -1,9 +1,9 @@
 <cfscript>
 /**
-* 
+*
 * This file is part of MuraPlugin
 *
-* Copyright 2013-2015 Stephen J. Withington, Jr.
+* Copyright 2013-2016 Stephen J. Withington, Jr.
 * Licensed under the Apache License, Version v2.0
 * http://www.apache.org/licenses/LICENSE-2.0
 *
@@ -20,7 +20,7 @@
 		<package>#variables.settings.package#</package>
 
 		<!--
-			DirectoryFormat : 
+			DirectoryFormat :
 			This setting controls the format of the plugin directory.
 				* default : /plugins/{packageName}_{autoIncrement}/
 				* packageOnly : /plugins/{packageName}/
@@ -28,7 +28,7 @@
 		<directoryFormat>packageOnly</directoryFormat>
 
 		<!--
-			LoadPriority : 
+			LoadPriority :
 			Options are 1 through 10.
 			Determines the order that the plugins will fire during the
 			onApplicationLoad event. This allows plugins to use other
@@ -41,30 +41,30 @@
 		<version>#variables.settings.version#</version>
 
 		<!--
-			Provider : 
+			Provider :
 			Meta information. The name of the creator/organization that
 			developed the plugin.
 		-->
 		<provider>#variables.settings.provider#</provider>
 
 		<!--
-			ProviderURL : 
+			ProviderURL :
 			URL of the creator/organization that developed the plugin.
 		-->
 		<providerURL>#variables.settings.providerURL#</providerURL>
 
 		<!-- Category : Usually either 'Application' or 'Utility' -->
 		<category>#variables.settings.category#</category>
-		
+
 		<!--
-			ORMCFCLocation : 
-			May contain a list of paths where Mura should look for 
+			ORMCFCLocation :
+			May contain a list of paths where Mura should look for
 			custom ORM components.
 		-->
 		<!-- <ormCFCLocation>/extensions/orm</ormCFCLocation> -->
 
-		<!-- 
-			CustomTagPaths : 
+		<!--
+			CustomTagPaths :
 			May contain a list of paths where Mura should look for
 			custom tags.
 		-->
@@ -106,7 +106,7 @@
 		-->
 		<!-- <siteID></siteID> -->
 
-		<!-- 
+		<!--
 				Plugin Settings :
 				The settings contain individual settings that the plugin
 				requires to function.
@@ -132,9 +132,9 @@
 		<!-- Event Handlers -->
 		<eventHandlers>
 			<!-- only need to register the eventHandler.cfc via onApplicationLoad() -->
-			<eventHandler 
-				event="onApplicationLoad" 
-				component="extensions.eventHandler" 
+			<eventHandler
+				event="onApplicationLoad"
+				component="extensions.eventHandler"
 				persist="false" />
 		</eventHandlers>
 
@@ -160,7 +160,7 @@
 
 			<!-- Configurable Display Object Example -->
 			<displayobject
-				name="Say Anything Configurable Display Object"  
+				name="Say Anything Configurable Display Object"
 				component="extensions.displayObjects"
 				displaymethod="dspConfiguredSayAnything"
 				configuratorJS="extensions/configurators/sayAnything/configurator.js"
@@ -169,7 +169,7 @@
 
 		</displayobjects>
 
-		<!-- 
+		<!--
 			Extensions :
 			Allows you to create custom Class Extensions of any type.
 			See /default/includes/themes/MuraBootstrap/config.xml.cfm
@@ -180,7 +180,7 @@
 			<!-- Example of using Custom UI in conjunction with onContentEdit() -->
 			<!--- <extension type="Base" subType="Default">
 				<attributeset name="onContentEdit Fields" container="Custom">
-					<attribute 
+					<attribute
 						name="muraPluginExampleField"
 						label="MuraPlugin Example Field"
 						hint=""
@@ -192,7 +192,7 @@
 						message=""
 						optionList=""
 						optionLabelList="" />
-					<attribute 
+					<attribute
 						name="muraPluginSomeSelectMenu"
 						label="MuraPlugin Some Select Menu"
 						hint=""
@@ -206,7 +206,7 @@
 						optionLabelList="[m]application.MuraPlugin.getMyCustomOptionLabelList()[/m]" />
 				</attributeset>
 			</extension> --->
-			
+
 		</extensions>
 
 	</plugin>

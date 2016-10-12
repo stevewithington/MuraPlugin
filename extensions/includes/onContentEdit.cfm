@@ -1,9 +1,9 @@
 <cfsilent><cfscript>
 /**
-* 
+*
 * This file is part of MuraPlugin
 *
-* Copyright 2013-2015 Stephen J. Withington, Jr.
+* Copyright 2013-2016 Stephen J. Withington, Jr.
 * Licensed under the Apache License, Version v2.0
 * http://www.apache.org/licenses/LICENSE-2.0
 *
@@ -23,14 +23,14 @@
   <div class="fieldset">
 
     <div class="form-group control-group">
-      <!--- 
-        These fields don't actually exist in Mura ... 
+      <!---
+        These fields don't actually exist in Mura ...
         and they've not been created as an extended attribute yet!
 
         They're listed here merely as examples.
 
         Also, using onContentEdit() assumes you've added class extensions
-        under Base/Default to apply to all content types. Or, you could 
+        under Base/Default to apply to all content types. Or, you could
         target a specific content Type and/or SubType using:
         on{Type}Edit(), or on{Type}{SubType}Edit()
       --->

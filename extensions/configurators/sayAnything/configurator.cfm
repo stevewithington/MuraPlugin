@@ -1,16 +1,16 @@
 <cfscript>
 /**
-* 
+*
 * This file is part of MuraPlugin
 *
-* Copyright 2013-2015 Stephen J. Withington, Jr.
+* Copyright 2013-2016 Stephen J. Withington, Jr.
 * Licensed under the Apache License, Version v2.0
 * http://www.apache.org/licenses/LICENSE-2.0
 *
 */
 
-	$ = StructKeyExists(session, 'siteid') ? 
-		application.serviceFactory.getBean('$').init(session.siteid) : 
+	$ = StructKeyExists(session, 'siteid') ?
+		application.serviceFactory.getBean('$').init(session.siteid) :
 		application.serviceFactory.getBean('$').init('default');
 
 	params = IsJSON($.event('params')) ? DeSerializeJSON($.event('params')) : {};
@@ -18,7 +18,7 @@
 	defaultParams = {
 		message = ''
 	};
-	
+
 	StructAppend(params, defaultParams, false);
 </cfscript>
 
@@ -29,9 +29,9 @@
 
 <cfoutput>
 
-	<div id="availableObjectParams"	
-		data-object="plugin" 
-		data-name="sayAnything" 
+	<div id="availableObjectParams"
+		data-object="plugin"
+		data-name="sayAnything"
 		data-objectid="#$.event('objectID')#">
 
 		<div class="row-fluid">
@@ -40,10 +40,10 @@
 			<div class="control-group">
 				<label for="size" class="control-label">Message</label>
 				<div class="controls">
-					<input type="text" 
-						name="message" 
-						id="message" 
-						class="objectParam span12" 
+					<input type="text"
+						name="message"
+						id="message"
+						class="objectParam span12"
 						value="#params.message#">
 				</div>
 			</div>

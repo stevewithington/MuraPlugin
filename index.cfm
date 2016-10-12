@@ -1,9 +1,9 @@
 <cfscript>
 /**
-* 
+*
 * This file is part of MuraPlugin
 *
-* Copyright 2013-2015 Stephen J. Withington, Jr.
+* Copyright 2013-2016 Stephen J. Withington, Jr.
 * Licensed under the Apache License, Version v2.0
 * http://www.apache.org/licenses/LICENSE-2.0
 *
@@ -27,7 +27,7 @@
 
 	<h3>Need help?</h3>
 	<p>If you're running into an issue, please let me know at <a href="https://github.com/stevewithington/#HTMLEditFormat(pluginConfig.getPackage())#/issues">https://github.com/stevewithington/#HTMLEditFormat(pluginConfig.getPackage())#/issues</a> and I'll try to address it as soon as I can.</p>
-	
+
 	<p>Cheers!<br />
 	<a href="http://stephenwithington.com">Steve Withington</a></p>
 </div>
