@@ -131,11 +131,7 @@
 
 		<!-- Event Handlers -->
 		<eventHandlers>
-			<!-- only need to register the eventHandler.cfc via onApplicationLoad() -->
-			<eventHandler
-				event="onApplicationLoad"
-				component="extensions.eventHandler"
-				persist="false" />
+			<eventHandler event="onApplicationLoad" component="model.handlers.muraplugin" persist="false"/>
 		</eventHandlers>
 
 		<!--
@@ -146,19 +142,7 @@
 			for CFC-based objects determine whether they are cached or instantiated
 			on a per-request basis.
 		-->
-		<displayobjects location="global">
-
-			<displayobject
-				name="Say Hello (CFM)"
-				displayobjectfile="extensions/display_objects/sayHello.cfm" />
-
-			<displayobject
-				name="Say Hello (CFC)"
-				component="extensions.displayObjects"
-				displaymethod="sayHello"
-				persist="false" />
-
-			<!-- Configurable Display Object Example -->
+		<!--- <displayobjects location="global">
 			<displayobject
 				name="Say Anything Configurable Display Object"
 				component="extensions.displayObjects"
@@ -166,8 +150,7 @@
 				configuratorJS="extensions/configurators/sayAnything/configurator.js"
 				configuratorInit="initSayAnythingConfigurator"
 				persist="false" />
-
-		</displayobjects>
+		</displayobjects> --->
 
 		<!--
 			Extensions :

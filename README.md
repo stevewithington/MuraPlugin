@@ -4,7 +4,7 @@ This is a starter plugin to jumpstart your next Mura CMS plugin.
 
 
 ##Tested With
-* Mura CMS Core Version 6.2+
+* Mura CMS Core Version 7.0+
 * Adobe ColdFusion 11.0.0
 * Lucee 4.5.1
 

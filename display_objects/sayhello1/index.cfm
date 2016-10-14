@@ -16,5 +16,5 @@
 */
 </cfscript>
 <cfoutput>
-	<h3>Hello from sayHello.cfm</h3>
+	<h3>Hello from Say Hello 1</h3>
 </cfoutput>
