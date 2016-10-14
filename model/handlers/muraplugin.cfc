@@ -17,39 +17,4 @@ component accessors=true extends='mura.plugin.pluginGenericEventHandler' output=
 		//variables.pluginConfig.registerDisplayObjectDir('/MuraPlugin/display_objects/');
 	}
 
-	// This will create a new tab on all content types (Page,Folder,Link,File,Folder,Calendar,Gallery)
-	// The tab label will be the plugin's packageName by default
-	// public any function onContentEdit(required struct $) {
-	// 	var local = {};
-	// 	local.$ = arguments.$;
-	//
-	// 	savecontent variable='local.str' {
-	// 		include 'includes/onContentEdit.cfm';
-	// 	}
-	//
-	// 	return local.str;
-	// }
-
-	// This assumes you've created a Folder/Employees custom class extension
-	// Examples have been commented out in the /MuraPlugin/plugin/config.xml.cfm file
-	// The on{Type}{SubType}Edit() method won't work yet. A pull request was issued as of Mura v6.1.6014
-	/*
-	public any function onFolderEmployeesEdit(required struct $) {
-		var local = {};
-		local.$ = arguments.$;
-
-		// example of how to define a custom label for your tab
-		local.$.event('tabLabel', 'Employee Info');
-
-		// check plugin permissions before rendering custom tab
-		if ( local.$.getBean('permUtility').getModulePerm(local.$.getPlugin(variables.settings.pluginName).getModuleID(), local.$.event('siteid') ) ) {
-			savecontent variable='local.str' {
-				include 'includes/onFolderEmployeesEdit.cfm';
-			}
-		}
-
-		return local.str;
-	}
-	*/
-
 }

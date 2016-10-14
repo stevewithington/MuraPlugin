@@ -20,7 +20,7 @@
 
 	<h3>Tested With</h3>
 	<ul>
-		<li>Mura CMS Core Version <strong>6.2+</strong></li>
+		<li>Mura CMS Core Version <strong>7.0+</strong></li>
 		<li>Adobe ColdFusion <strong>11.0.0</strong></li>
 		<li>Lucee <strong>4.5.1</strong></li>
 	</ul>
@@ -28,15 +28,10 @@
 	<h3>Need help?</h3>
 	<p>If you're running into an issue, please let me know at <a href="https://github.com/stevewithington/#HTMLEditFormat(pluginConfig.getPackage())#/issues">https://github.com/stevewithington/#HTMLEditFormat(pluginConfig.getPackage())#/issues</a> and I'll try to address it as soon as I can.</p>
 
-	<p>Cheers!<br />
-	<a href="http://stephenwithington.com">Steve Withington</a></p>
+	<h3>Cheers!<br />
+	<a href="http://stephenwithington.com">Steve Withington</a></h3>
 </div>
 </cfoutput></cfsavecontent>
 <cfoutput>
-	#$.getBean('pluginManager').renderAdminTemplate(
-		body = body
-		, pageTitle = ''
-		, jsLib = 'jquery'
-		, jsLibLoaded = false
-	)#
+	#$.getBean('pluginManager').renderAdminTemplate(body = body)#
 </cfoutput>

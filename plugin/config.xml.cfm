@@ -56,6 +56,11 @@
 		<!-- Category : Usually either 'Application' or 'Utility' -->
 		<category>#variables.settings.category#</category>
 
+		<!-- Event Handlers -->
+		<eventHandlers>
+			<eventHandler event="onApplicationLoad" component="model.handlers.muraplugin" persist="false"/>
+		</eventHandlers>
+
 		<!--
 			ORMCFCLocation :
 			May contain a list of paths where Mura should look for
@@ -128,29 +133,6 @@
 			</setting>
 			-->
 		</settings>
-
-		<!-- Event Handlers -->
-		<eventHandlers>
-			<eventHandler event="onApplicationLoad" component="model.handlers.muraplugin" persist="false"/>
-		</eventHandlers>
-
-		<!--
-			Display Objects :
-			Allows developers to provide widgets that end users can apply to a
-			content node's display region(s) when editing a page. They'll be
-			listed under the Layout & Objects tab. The 'persist' attribute
-			for CFC-based objects determine whether they are cached or instantiated
-			on a per-request basis.
-		-->
-		<!--- <displayobjects location="global">
-			<displayobject
-				name="Say Anything Configurable Display Object"
-				component="extensions.displayObjects"
-				displaymethod="dspConfiguredSayAnything"
-				configuratorJS="extensions/configurators/sayAnything/configurator.js"
-				configuratorInit="initSayAnythingConfigurator"
-				persist="false" />
-		</displayobjects> --->
 
 		<!--
 			Extensions :
