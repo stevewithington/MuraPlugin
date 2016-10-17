@@ -21,8 +21,8 @@
 	<h3>Tested With</h3>
 	<ul>
 		<li>Mura CMS Core Version <strong>7.0+</strong></li>
-		<li>Adobe ColdFusion <strong>11.0.0</strong></li>
-		<li>Lucee <strong>4.5.1</strong></li>
+		<li>Adobe ColdFusion <strong>2016.0.02.299200</strong></li>
+		<li>Lucee <strong>5.0.0.254</strong></li>
 	</ul>
 
 	<h3>Need help?</h3>
