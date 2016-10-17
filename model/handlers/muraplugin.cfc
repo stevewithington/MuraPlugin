@@ -14,7 +14,8 @@ component accessors=true extends='mura.plugin.pluginGenericEventHandler' output=
 	public any function onApplicationLoad(required struct m) {
 		// Register all event handlers/listeners of this .cfc with Mura CMS
 		variables.pluginConfig.addEventHandler(this);
-		//variables.pluginConfig.registerDisplayObjectDir('/MuraPlugin/display_objects/');
 	}
+
+	// Add any event handlers here
 
 }
