@@ -141,7 +141,6 @@
 			for examples.
 		-->
 		<extensions>
-
 			<!-- Example of using Custom UI in conjunction with onContentEdit() -->
 			<!--- <extension type="Base" subType="Default">
 				<attributeset name="onContentEdit Fields" container="Custom">
@@ -171,7 +170,6 @@
 						optionLabelList="[m]application.MuraPlugin.getMyCustomOptionLabelList()[/m]" />
 				</attributeset>
 			</extension> --->
-
 		</extensions>
 
 	</plugin>
