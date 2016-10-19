@@ -16,7 +16,6 @@
 */
 	pluginpath = m.globalConfig('context') & '/plugins/MuraPlugin';
 	param name='objectparams.sayhellomessage' default='';
-
 </cfscript>
 <cfoutput>
 	<h3>Say Hello</h3>
