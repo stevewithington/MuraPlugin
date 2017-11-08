@@ -24,8 +24,17 @@ component accessors=true output=false {
 	public any function onRequestStart(required string targetPage) {
 		include '../../config/appcfc/onRequestStart_include.cfm';
 
-		if ( isRequestExpired() ) {
+		if (
+			(
+				StructKeyExists(variables.settings, 'reloadApplicationOnEveryRequest')
+				&& variables.settings.reloadApplicationOnEveryRequest
+			)
+			|| !StructKeyExists(application, 'appInitializedTime')
+		) {
 			onApplicationStart();
+		}
+
+		if ( isSessionExpired() ) {
 			lock scope='session' type='exclusive' timeout=10 {
 				setupSession();
 			}
@@ -89,15 +98,11 @@ component accessors=true output=false {
 		location(url='#$.globalConfig('context')#/admin/index.cfm?muraAction=clogin.main&returnURL=#$.globalConfig('context')#/plugins/#$.getPlugin(variables.settings.pluginName).getPackage()#/', addtoken=false);
 	}
 
-	private boolean function isRequestExpired() {
+	private boolean function isSessionExpired() {
 		var p = variables.settings.package;
-		return variables.settings.reloadApplicationOnEveryRequest
-				|| !StructKeyExists(session, p)
-				|| !StructKeyExists(application, 'appInitializedTime')
+		return !StructKeyExists(session, p)
 				|| DateCompare(now(), session[p].expires, 's') == 1
-				|| DateCompare(application.appInitializedTime, session[p].created, 's') == 1
-				|| (StructKeyExists(variables.settings, 'reloadApplicationOnEveryRequest')
-				    && variables.settings.reloadApplicationOnEveryRequest);
+				|| DateCompare(application.appInitializedTime, session[p].created, 's') == 1;
 	}
 
 	private void function setupSession() {
