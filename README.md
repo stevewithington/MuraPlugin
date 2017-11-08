@@ -1,16 +1,16 @@
-#MuraPlugin
+# MuraPlugin
 
 This is a starter plugin to jumpstart your next Mura CMS plugin.
 
 
-##Tested With
+## Tested With
 * [Mura CMS](http://www.getmura.com) Core Version 7.0+
 * [Adobe ColdFusion](http://www.adobe.com/coldfusion) 2016.0.02.299200
 * [Lucee](http://lucee.org) 5.0.0.254
 
 
-##License
-Copyright 2013-2016 Stephen J. Withington, Jr.
+## License
+Copyright 2013-2017 Stephen J. Withington, Jr.
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this work except in compliance with the License. You may obtain a copy of the License in the LICENSE file, or at:
 
